@@ -1,0 +1,87 @@
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+AllCops:
+  TargetRubyVersion: 3.3.3
+Layout/ArrayAlignment:
+  Enabled: true
+Layout/ArgumentAlignment:
+  Enabled: true
+Layout/BeginEndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+Layout/BlockAlignment:
+  Enabled: true
+Layout/BlockEndNewline:
+  Enabled: true
+Layout/ClosingParenthesisIndentation:
+  Enabled: true
+Layout/DefEndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: def
+Layout/FirstArgumentIndentation:
+  Enabled: true
+Layout/FirstArrayElementIndentation:
+  Enabled: true
+Layout/FirstHashElementIndentation:
+  Enabled: true
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+Layout/FirstParameterIndentation:
+  Enabled: true
+Layout/HashAlignment:
+  Enabled: true
+Layout/IndentationConsistency:
+  Enabled: true
+  EnforcedStyle: indented_internal_methods
+Layout/IndentationWidth:
+  Enabled: true
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+Layout/MultilineBlockLayout:
+  Enabled: true
+Layout/MultilineHashBraceLayout:
+  Enabled: true
+  EnforcedStyle: new_line
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+Layout/MultilineMethodCallBraceLayout:
+  Enabled: true
+  EnforcedStyle: new_line
+Layout/MultilineMethodParameterLineBreaks:
+  Enabled: true
+Layout/ParameterAlignment:
+  Enabled: true
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBrackets: no_space
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+Style/BlockDelimiters:
+  Enabled: true
+Style/SymbolArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+  Include:
+    - "app/**/*"
+    - "config/**/*"
+    - "lib/**/*"
+    - "spec/**/*"
+    - "Gemfile"
+Style/WordArray:
+  Enabled: true
+  EnforcedStyle: brackets
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always_true
+  SafeAutoCorrect: true

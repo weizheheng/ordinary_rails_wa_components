@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ordinary rails wa components</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= yield :head %>
+
+  <%= stylesheet_link_tag    "ordinary_rails_wa_components/application", media: "all" %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
