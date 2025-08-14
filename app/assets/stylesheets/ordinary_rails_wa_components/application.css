@@ -13,3 +13,94 @@
  *= require_tree .
  *= require_self
  */
+
+.inline-form-error {
+  font-size: var(--wa-font-size-m);
+  color: var(--wa-color-red);
+}
+
+.inline-validation wa-input[invalid]::part(input) {
+  border-color: var(--wa-color-danger-border-loud);
+}
+
+.inline-validation wa-textarea[invalid]::part(base) {
+  border-color: var(--wa-color-danger-border-loud);
+}
+
+.inline-validation .combobox-invalid .hw-combobox__main__wrapper {
+  .hw-combobox__input {
+    border-color: var(--wa-color-danger-border-loud) !important;
+  }
+}
+
+.wa-combobox {
+  .hw-combobox {
+    width: 100%;
+  }
+
+  .hw-combobox__main__wrapper {
+    width: 100%;
+    border: none;
+    padding: 0;
+
+    &:focus-within {
+      box-shadow: none;
+    }
+  }
+
+  .hw-combobox__dialog {
+    max-width: 100%;
+    max-height: 100vh;
+    padding: 20px;
+    border-radius: var(--wa-border-radius-m);
+  }
+
+  .hw-combobox__handle {
+    margin-right: 6px;
+  }
+
+  .hw-combobox__dialog__input {
+    padding: 11px calc(0 * calc(1.125 * 0.75rem) + 1 * calc(1.125 * 1rem) + 0 * calc(1.125 * 1.25rem));
+    border-width: var(--wa-form-control-border-width) !important;
+    border-style: var(--wa-form-control-border-style) !important;
+    border-color: var(--wa-color-neutral-border-normal) !important;
+  }
+
+  .hw-combobox__input {
+    padding: 11px calc(0 * calc(1.125 * 0.75rem) + 1 * calc(1.125 * 1rem) + 0 * calc(1.125 * 1.25rem));
+    border-width: var(--wa-form-control-border-width) !important;
+    border-style: var(--wa-form-control-border-style) !important;
+    border-color: var(--wa-color-neutral-border-normal) !important;
+    &:focus-within {
+      outline: var(--wa-focus-ring);
+    }
+  }
+
+  .hw-combobox__listbox {
+    padding: 8px 0;
+    background-color: white;
+  }
+
+  .hw-combobox__option {
+    padding: 8px 16px;
+    margin-inline-start: 0;
+
+    &:hover {
+      background-color: var(--wa-color-neutral-fill-normal);
+      color: var(--wa-color-neutral-on-normal);
+      opacity: 1;
+    }
+  }
+
+  .hw-combobox__option--selected {
+    background-color: var(--wa-color-brand-fill-loud);
+    color: var(--wa-color-brand-on-loud);
+    opacity: 1;
+
+    &:hover {
+      background-color: var(--wa-color-brand-fill-loud);
+      color: var(--wa-color-brand-on-loud);
+      opacity: 1;
+    }
+  }
+}

@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require_relative "lib/ordinary_rails_wa_components/version"
 
 Gem::Specification.new do |spec|
   spec.name        = "ordinary_rails_wa_components"
   spec.version     = OrdinaryRailsWaComponents::VERSION
-  spec.authors     = [ "Wei Zhe Heng" ]
-  spec.email       = [ "marcushwz@gmail.com" ]
+  spec.authors     = ["Wei Zhe Heng"]
+  spec.email       = ["marcushwz@gmail.com"]
   spec.homepage    = "TODO"
   spec.summary     = "TODO: Summary of OrdinaryRailsWaComponents."
   spec.description = "TODO: Description of OrdinaryRailsWaComponents."
@@ -24,4 +26,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 8.0.2"
   spec.add_dependency "view_component", "~> 3.0" # Add ViewComponent
+  spec.add_dependency "stimulus-rails", ">= 1.0.0"
+  # spec.add_dependency "hotwire_combobox", "~> 0.4.0"
 end

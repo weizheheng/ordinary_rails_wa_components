@@ -1,0 +1,8 @@
+<div>
+  <%= tag.wa_input(**text_field_options) do %>
+    <%= content %>
+  <% end %>
+  <% if has_error? %>
+    <div class="inline-form-error"><%= error_message %></div>
+  <% end %>
+</div>

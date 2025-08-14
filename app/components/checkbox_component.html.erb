@@ -1,0 +1,6 @@
+<div>
+  <%= tag.input(class: "input", type: "hidden", value: "0", name: checkbox_options["name"]) %>
+  <%= tag.wa_checkbox(**checkbox_options) do %>
+    <%= content %>
+  <% end %>
+</div>

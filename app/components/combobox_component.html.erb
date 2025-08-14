@@ -1,0 +1,8 @@
+<%= tag.div(class: classes) do %>
+  <%= render(
+    ::HotwireCombobox::Component.new @template, @name, options: options, async_src: src, label: @label, **@kwargs
+  ) %>
+  <% if has_error? %>
+    <div class="inline-form-error"><%= error_message %></div>
+  <% end %>
+<% end %>
