@@ -54,4 +54,27 @@ class OrdinaryRailsWaComponents::WaFormBuilder < ActionView::Helpers::FormBuilde
       &block
     )
   end
+
+  def new_combobox(method, **options, &block)
+    render(
+      NewComboboxComponent.new(
+        method,
+        form: self,
+        **options
+      ),
+      &block
+    )
+  end
+
+  def select(method, select_options: [], **options, &block)
+    render(
+      SelectComponent.new(
+        method,
+        form: self,
+        select_options: select_options,
+        **options
+      ),
+      &block
+    )
+  end
 end

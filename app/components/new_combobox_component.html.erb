@@ -1,0 +1,12 @@
+<div>
+  <%= tag.wa_combobox(**combobox_options) do %>
+    <% @select_options.each do |option| %>
+      <%= tag.wa_option(value: option[:value]) do %>
+        <%= option[:label] %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if has_error? %>
+    <div class="inline-form-error"><%= error_message %></div>
+  <% end %>
+</div>

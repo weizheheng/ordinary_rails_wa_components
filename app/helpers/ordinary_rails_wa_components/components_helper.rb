@@ -9,10 +9,12 @@ module OrdinaryRailsWaComponents
       wa_text_field: "TextFieldComponent",
       wa_text_area: "TextAreaComponent",
       wa_combobox: "ComboboxComponent",
+      wa_new_combobox: "NewComboboxComponent",
       wa_card: "CardComponent",
       wa_navigation_item: "NavigationItemComponent",
       wa_icon_button: "IconButtonComponent",
-      wa_checkbox: "CheckboxComponent"
+      wa_checkbox: "CheckboxComponent",
+      wa_select: "SelectComponent"
     }
 
     COMPONENTS.each do |name, component|
