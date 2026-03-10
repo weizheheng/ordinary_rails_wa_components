@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class OrdinaryRailsWaComponents::WaFormBuilder < ActionView::Helpers::FormBuilder
-  include ::HotwireCombobox::Helper
-
   attr_reader :template
 
   delegate :render, to: :template
@@ -43,21 +41,9 @@ class OrdinaryRailsWaComponents::WaFormBuilder < ActionView::Helpers::FormBuilde
     )
   end
 
-  def combobox(*args, **kwargs, &block)
+  def combobox(method, **options, &block)
     render(
       ComboboxComponent.new(
-        *args,
-        template: template,
-        form: self,
-        **kwargs
-      ),
-      &block
-    )
-  end
-
-  def new_combobox(method, **options, &block)
-    render(
-      NewComboboxComponent.new(
         method,
         form: self,
         **options

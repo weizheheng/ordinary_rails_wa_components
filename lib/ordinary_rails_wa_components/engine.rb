@@ -2,8 +2,6 @@
 
 require "stimulus-rails"
 require "view_component"
-require "hotwire_combobox"
-require "hotwire_combobox/helper"
 
 module OrdinaryRailsWaComponents
   class Engine < ::Rails::Engine

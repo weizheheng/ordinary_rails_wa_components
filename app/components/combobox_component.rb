@@ -1,84 +1,70 @@
 # frozen_string_literal: true
 
 class ComboboxComponent < ViewComponent::Base
-  include ::HotwireCombobox::Helper
-
   def initialize(
-    name,
-    options_or_src = [],
-    template: nil,
+    method_name,
     form: nil,
-    render_in: {},
-    include_blank: nil,
     label: nil,
-    **kwargs
+    hint: nil,
+    placeholder: nil,
+    clearable: nil,
+    disabled: nil,
+    size: nil,
+    select_options: [],
+    **options
   )
-    @name = name
-    @options_or_src = options_or_src
-    @render_in = render_in
-    @template = template
-    @include_blank = include_blank
     @form = form
-    @label = label || @name.to_s.titleize
-    @kwargs = form ? kwargs.merge(form: form) : kwargs
+    @method_name = method_name
+    @label = label
+    @hint = hint
+    @placeholder = placeholder
+    @clearable = clearable || nil
+    @disabled = disabled || nil
+    @size = size
+    @select_options = select_options
+    @options = options
   end
 
   private
-
-    def options
-      extracted_options_and_src[0]
-    end
-
-    def src
-      extracted_options_and_src[1]
-    end
-
-    def extracted_options_and_src
-      return @extracted_options_and_src if defined?(@extracted_options_and_src)
-
-      if @render_in.present?
-        if @options_or_src.is_a? String
-
-          @options = ::HotwireCombobox::Listbox::Item.collection_for(@template, [])
-          @src = @options_or_src
-        else
-
-          @options = ::HotwireCombobox::Listbox::Item.collection_for(
-            @template,
-            @options_or_src,
-            render_in: @render_in,
-            include_blank: @include_blank,
-            display: :to_combobox_display
-          )
-          @src = nil
-        end
-      else
-        @options, @src = hw_extract_options_and_src @options_or_src, @render_in, @include_blank
-      end
-
-      @extracted_options_and_src = [@options, @src]
-    end
-
-    def classes
-      classes = ["wa-combobox"]
-
-      classes << "combobox-invalid" if has_error?
-
-      classes.join(" ")
-    end
 
     def error_message
       return @error_message if defined?(@error_message)
       return nil unless has_error?
 
-
-      @error_message = raw @form.object.errors.messages_for(@name)&.join(", ")
+      @error_message = raw @form.object.errors.messages_for(@method_name)&.join(", ")
     end
 
     def has_error?
       return @has_error if defined?(@has_error)
       return false if @form&.object.blank?
 
-      @has_error = @form.object.errors.key?(@name)
+      @has_error = @form.object.errors.key?(@method_name)
+    end
+
+    def combobox_options
+      options = {
+        label: @label || @method_name.to_s.titleize,
+        hint: @hint,
+        placeholder: @placeholder,
+        "with-clear": @clearable,
+        disabled: @disabled,
+        size: @size,
+        **@options
+      }
+
+      if @form
+        options.merge!(@form.options.slice(:allow_method_names_outside_object, :skip_default_ids, :builder))
+        options.merge!(object: @form.object)
+        options.merge!(invalid: true) if has_error?
+
+        options = ::OrdinaryRailsWaComponents::Tags::WaTextField.new(
+          @form.object_name,
+          @method_name,
+          @form.template,
+          options
+        ).parsed_options
+      end
+
+      options
     end
 end
