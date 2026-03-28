@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency "rails", ">= 8.0.2"
-  spec.add_dependency "view_component", "~> 3.0" # Add ViewComponent
+  spec.add_dependency "view_component", "~> 4.5" # Add ViewComponent
   spec.add_dependency "stimulus-rails", ">= 1.0.0"
 end
