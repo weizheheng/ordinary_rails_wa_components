@@ -2,7 +2,7 @@
   <%= tag.wa_select(**select_options) do %>
     <%= content %>
     <% @select_options.each do |option| %>
-      <%= tag.wa_option(value: option[:value]) do %>
+      <%= tag.wa_option(**option_attributes_for(option)) do %>
         <%= option[:label] %>
       <% end %>
     <% end %>

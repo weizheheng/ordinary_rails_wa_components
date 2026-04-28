@@ -41,6 +41,16 @@ class SelectComponent < ViewComponent::Base
       @has_error = @form.object.errors.key?(@method_name)
     end
 
+    def option_attributes_for(option)
+      attributes = { value: option[:value] }
+      attributes[:selected] = true if selected_option_values.include?(option[:value].to_s)
+      attributes
+    end
+
+    def selected_option_values
+      Array(@options[:value]).compact.map(&:to_s)
+    end
+
     def select_options
       options = {
         label: @label || @method_name.to_s.titleize,
