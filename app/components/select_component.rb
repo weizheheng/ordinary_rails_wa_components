@@ -51,6 +51,10 @@ class SelectComponent < ViewComponent::Base
       Array(@options[:value]).compact.map(&:to_s)
     end
 
+    def multiple_select_with_array_value?
+      @options[:multiple] && @options[:value].is_a?(Array)
+    end
+
     def select_options
       options = {
         label: @label || @method_name.to_s.titleize,
@@ -61,6 +65,7 @@ class SelectComponent < ViewComponent::Base
         size: @size,
         **@options
       }
+      options.delete(:value) if multiple_select_with_array_value?
 
       if @form
         options.merge!(@form.options.slice(:allow_method_names_outside_object, :skip_default_ids, :builder))

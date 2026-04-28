@@ -35,4 +35,19 @@ class SelectComponentTest < ActiveSupport::TestCase
     assert_selector("wa-option[value='trail'][selected]", count: 1)
     assert_selector("wa-option[value='track'][selected]", count: 0)
   end
+
+  test "omits select value attribute for multiple select with array value" do
+    render_inline SelectComponent.new(
+      :terrain_access,
+      multiple: true,
+      value: ["road", "trail"],
+      select_options: [
+        { label: "Road", value: "road" },
+        { label: "Trail", value: "trail" }
+      ]
+    )
+
+    assert_selector("wa-select[multiple]", count: 1)
+    assert_selector("wa-select[value]", count: 0)
+  end
 end
