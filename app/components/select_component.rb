@@ -65,7 +65,6 @@ class SelectComponent < ViewComponent::Base
         size: @size,
         **@options
       }
-      options.delete(:value) if multiple_select_with_array_value?
 
       if @form
         options.merge!(@form.options.slice(:allow_method_names_outside_object, :skip_default_ids, :builder))
@@ -79,6 +78,8 @@ class SelectComponent < ViewComponent::Base
           options
         ).parsed_options
       end
+
+      options.delete("value") if multiple_select_with_array_value?
 
       options
     end
